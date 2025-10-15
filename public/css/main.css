@@ -1082,6 +1082,10 @@ nav a.active {
    Now Page
    ========================================================================== */
 
+.now-section {
+    margin-bottom: 2.5rem;
+}
+
 .now-updated {
     color: var(--text-meta);
     font-size: 0.9rem;
@@ -1099,6 +1103,10 @@ main > p:first-of-type {
     margin-bottom: var(--space-large);
 }
 
+.press-section {
+    margin-bottom: var(--space-large);
+}
+
 .media-section {
     margin-bottom: var(--space-large);
 }
@@ -1106,7 +1114,7 @@ main > p:first-of-type {
 .media-section h3 {
     font-size: 1.1rem;
     font-weight: 600;
-    margin-top: var(--space-large);
+    margin-top: var(--space-divider);
     margin-bottom: 1rem;
 }
 
@@ -1134,7 +1142,7 @@ main > p:first-of-type {
     padding: 1.5rem;
     border-radius: 8px;
     color: var(--text-primary);
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-divider);
     line-height: 1.7;
     font-size: 1rem;
 }
@@ -1412,7 +1420,7 @@ main > p:first-of-type {
     margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: var(--space-tight);
 }
 
 .contact-label {
