@@ -21,10 +21,7 @@ shawnyeager-org/
 │   └── partials/
 │       ├── head.html            # Outlined favicon override
 │       └── footer.html          # No newsletter override
-├── static/
-│   ├── css/
-│   │   └── main.css             # Design system (copied from theme during dev)
-│   └── robots.txt               # Block search engines
+├── static/                      # Static files (currently empty)
 └── public/                      # Built site (not committed)
 ```
 
@@ -98,14 +95,16 @@ This site overrides these theme templates:
    - Essays → (links to .com)
    - Email
 
-## robots.txt
+## Search Engine Blocking
 
-**Critical:** `static/robots.txt` blocks all search engines:
+**Critical:** Search engines are blocked via the `noindex` parameter in `hugo.toml`:
 
+```toml
+[params]
+  noindex = true  # Blocks search engines via robots meta tag
 ```
-User-agent: *
-Disallow: /
-```
+
+The theme generates `<meta name="robots" content="noindex, nofollow">` when this is set to `true`.
 
 This ensures notes remain findable but not promoted.
 
@@ -178,8 +177,8 @@ Before deploying:
 - [ ] No broken links
 - [ ] Dark mode works
 - [ ] Mobile responsive
-- [ ] **robots.txt present in public/**
-- [ ] robots.txt contains "Disallow: /"
+- [ ] **noindex = true in hugo.toml** (blocks search engines)
+- [ ] Robots meta tag present in HTML head
 - [ ] No newsletter form in footer
 - [ ] Footer links to .com (Essays →)
 - [ ] Date format is short (2025 · 10)
@@ -203,9 +202,9 @@ git push origin master
 ```
 
 **Post-deploy verification:**
-1. Check robots.txt is accessible: `curl https://shawnyeager.org/robots.txt`
-2. Verify it blocks indexing
-3. Confirm no newsletter form appears
+1. View page source and verify robots meta tag: `<meta name="robots" content="noindex, nofollow">`
+2. Confirm no newsletter form appears
+3. Check date format is short (2025 · 10)
 
 ## Related Repositories
 
@@ -245,5 +244,5 @@ The Gallery (.com) is where ideas graduate to after they've been refined here in
 - Never commit `public/` directory (in `.gitignore`)
 - No analytics needed (this is the workshop)
 - Outlined orange favicon differentiates from .com's solid favicon
-- robots.txt is the most critical file - always verify after deployment
+- `noindex` parameter is critical - always verify meta tag after deployment
 - Feel free to be messy here - that's the point
