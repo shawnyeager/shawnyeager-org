@@ -52,7 +52,7 @@ enableEmoji = true
   # Theme configuration
   content_type = "notes"          # Content type for parameterized templates
   favicon_style = "outlined"      # Favicon style: "solid" or "outlined"
-  noindex = true                  # Block search engines (true = block indexing)
+  noindex = false                 # Block search engines (true = block indexing)
 
   # Email signup (footer)
   show_email_signup = false       # No email signup on workshop site

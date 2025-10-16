@@ -9,15 +9,15 @@
    ========================================================================== */
 
 :root {
-    /* Brand Colors - Trust Revolution Orange */
-    --brand-orange: #F84200;
-    --brand-orange-hover: #d63900;
+    /* Brand Colors - Trust Revolution Orange (WCAG AA compliant) */
+    --brand-orange: #d63900;
+    --brand-orange-hover: #b83200;
 
     /* Light Mode Colors - WCAG AA compliant */
     --text-primary: #1a1a1a;        /* 16.1:1 contrast */
     --text-secondary: #555;          /* 7.5:1 contrast */
     --text-tertiary: #555;           /* 7.5:1 contrast */
-    --text-meta: #777;               /* 4.7:1 contrast */
+    --text-meta: #666;               /* 5.74:1 contrast */
     --text-subtle: #767676;          /* 4.54:1 contrast */
     --border-color: #d5d5d5;
     --background-body: #ffffff;
@@ -35,7 +35,19 @@
     --space-divider: 2rem;      /* Around dividers (nav, footer) */
     --space-element: 1.5rem;    /* Between related elements */
     --space-tight: 1rem;        /* Tight coupling (intro to form) */
+    --space-medium: 2.5rem;     /* Medium spacing for content sections */
+    --space-small: 0.75rem;     /* Small spacing for compact elements */
     --list-item-spacing: 0.35rem;  /* List item vertical spacing */
+
+    /* Component Sizing */
+    --card-padding: 2rem;       /* Standard card/box padding */
+    --border-radius: 8px;       /* Standard border radius for cards */
+    --border-radius-small: 6px; /* Smaller radius for images, code blocks */
+    --border-radius-tiny: 4px;  /* Tiny radius for buttons, inputs */
+    --border-radius-code: 3px;  /* Inline code border radius */
+
+    /* Transitions */
+    --transition-fast: 0.3s ease;  /* Standard transition timing */
 
     /* Syntax Highlighting - Light Mode */
     --syntax-keyword: #0066aa;      /* Deep blue - keywords (if, function, const) */
@@ -152,7 +164,7 @@ h3 {
 a {
     color: var(--brand-orange);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color var(--transition-fast);
 }
 
 a:hover {
@@ -186,7 +198,7 @@ a span[aria-hidden="true"] {
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
-    transition: color 0.3s ease;
+    transition: color var(--transition-fast);
 }
 
 .cta-link:hover,
@@ -205,7 +217,7 @@ a span[aria-hidden="true"] {
 .podcast-services a {
     color: var(--brand-orange);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color var(--transition-fast);
 }
 
 .podcast-services a:hover {
@@ -282,7 +294,7 @@ nav a.active {
     right: 1rem;
     height: 1px;
     background: var(--border-color);
-    transition: background-color 0.3s ease;
+    transition: background-color var(--transition-fast);
 }
 
 .email-signup-intro {
@@ -311,7 +323,7 @@ nav a.active {
     color: var(--text-primary);
     flex: 1;
     max-width: 260px;
-    transition: border-color 0.3s ease;
+    transition: border-color var(--transition-fast);
 }
 
 .email-form input[type="email"]:focus {
@@ -329,12 +341,12 @@ nav a.active {
     background: transparent;
     color: var(--text-meta);
     border: 1px solid var(--text-meta);
-    border-radius: 4px;
+    border-radius: var(--border-radius-tiny);
     font-size: 0.85rem;
     font-weight: 500;
     font-family: inherit;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all var(--transition-fast);
     white-space: nowrap;
     flex-shrink: 0;
 }
@@ -353,7 +365,7 @@ nav a.active {
 .footer-links a {
     color: var(--text-meta);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color var(--transition-fast);
     font-size: 0.85rem;
 }
 
@@ -362,10 +374,6 @@ nav a.active {
 }
 
 @media (max-width: 600px) {
-    .email-form {
-        flex-wrap: nowrap;
-    }
-
     .email-form input[type="email"] {
         max-width: none;
     }
@@ -414,31 +422,32 @@ nav a.active {
 }
 
 /* ==========================================================================
-   Podcast Feature Box
+   Card Components - Base Styles
    ========================================================================== */
 
-.podcast {
-    margin-bottom: var(--space-large);
-    padding: 2rem;
+/* Base card styling shared by podcast, services, and RSS cards */
+.podcast,
+.podcast-services-card,
+.rss-feed-card {
+    padding: var(--card-padding);
     background: var(--background-card);
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
-    transition: background-color 0.3s ease;
+    transition: background-color var(--transition-fast);
 }
 
+/* Podcast Feature Box - specific spacing */
+.podcast {
+    margin-bottom: var(--space-large);
+}
+
+/* Podcast Services Card - specific spacing */
 .podcast-services-card {
-    padding: 2rem;
-    background: var(--background-card);
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
     margin-bottom: 2rem;
 }
 
+/* RSS Feed Card - specific spacing and positioning */
 .rss-feed-card {
-    padding: 2rem;
-    background: var(--background-card);
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
     margin-top: 1rem;
     margin-bottom: 2rem;
     position: relative;
@@ -454,7 +463,7 @@ nav a.active {
 .podcast-art {
     width: 120px;
     height: 120px;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     flex-shrink: 0;
     object-fit: cover;
     display: block;
@@ -684,7 +693,8 @@ nav a.active {
 }
 
 /* ==========================================================================
-   Markdown Elements - Essay Body & Note Body
+   Markdown Elements - Shared Content Body Styles
+   Applied to both .essay-body and .note-body
    ========================================================================== */
 
 /* Ordered Lists */
@@ -772,7 +782,7 @@ nav a.active {
     font-size: 0.9em;
     background: var(--background-card);
     padding: 0.2em 0.4em;
-    border-radius: 3px;
+    border-radius: var(--border-radius-code);
     border: 1px solid var(--border-color);
     white-space: nowrap;
 }
@@ -784,7 +794,7 @@ nav a.active {
     padding: 1.5rem;
     background: var(--background-card);
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: var(--border-radius-small);
     overflow-x: auto;
     line-height: 1.5;
 }
@@ -894,7 +904,7 @@ nav a.active {
     width: 1.1em;
     height: 1.1em;
     border: 2px solid var(--border-color);
-    border-radius: 3px;
+    border-radius: var(--border-radius-code);
     background: var(--background-card);
     cursor: default;
     position: relative;
@@ -997,7 +1007,7 @@ nav a.active {
     max-width: 100%;
     height: auto;
     margin: 2rem 0;
-    border-radius: 6px;
+    border-radius: var(--border-radius-small);
     display: block;
 }
 
@@ -1096,9 +1106,8 @@ nav a.active {
    Media Page
    ========================================================================== */
 
-/* NOTE: Broad selector - applies to first <p> in any main element sitewide
-   Currently only affects Media Page subtitle, but may need refinement if scope expands */
-main > p:first-of-type {
+/* Media page subtitle - specific class instead of broad selector */
+.media-subtitle {
     color: var(--text-secondary);
     margin-bottom: var(--space-large);
 }
@@ -1108,7 +1117,7 @@ main > p:first-of-type {
 }
 
 .media-section {
-    margin-bottom: var(--space-large);
+    margin-bottom: var(--space-element);
 }
 
 .media-section h3 {
@@ -1120,7 +1129,7 @@ main > p:first-of-type {
 
 /* NOTE: :has() selector requires Firefox 121+, Safari 15.4+, Chrome 105+ - acceptable graceful degradation */
 .media-section:has(.contact-info) h3 {
-    margin-top: 4rem;
+    margin-top: var(--space-divider);
 }
 
 .media-section p {
@@ -1140,7 +1149,7 @@ main > p:first-of-type {
 .bio-text {
     background: var(--background-card);
     padding: 1.5rem;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     color: var(--text-primary);
     margin-bottom: var(--space-divider);
     line-height: 1.7;
@@ -1154,7 +1163,7 @@ main > p:first-of-type {
 .contact-info {
     background: var(--background-card);
     padding: 1.5rem;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
 }
 
 .contact-info-clean {
@@ -1228,6 +1237,7 @@ main > p:first-of-type {
     line-height: var(--line-height-essay);
 }
 
+/* Shared markdown element styles - paragraphs, headings, lists, links */
 .note-body p {
     margin-bottom: 1.5rem;
     color: var(--text-primary);
@@ -1242,7 +1252,7 @@ main > p:first-of-type {
 }
 
 .note-body h3 {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     font-weight: 600;
     margin-top: 2rem;
     margin-bottom: 0.75rem;
@@ -1433,7 +1443,7 @@ main > p:first-of-type {
     color: var(--brand-orange) !important;
     text-decoration: none !important;
     font-size: 1rem;
-    transition: color 0.3s ease;
+    transition: color var(--transition-fast);
 }
 
 .contact-value:hover {
@@ -1446,7 +1456,7 @@ main > p:first-of-type {
     font-size: 0.85rem;
     margin-top: var(--space-large);
     display: inline-block;
-    transition: color 0.3s ease;
+    transition: color var(--transition-fast);
 }
 
 .vcard-link:hover {
@@ -1467,7 +1477,7 @@ main > p:first-of-type {
     text-decoration: none;
     z-index: 10000;
     font-weight: 500;
-    border-radius: 0 0 4px 0;
+    border-radius: 0 0 var(--border-radius-tiny) 0;
 }
 
 .skip-link:focus {
@@ -1547,32 +1557,6 @@ main > p:first-of-type {
     .note-body .highlight pre[style] {
         background: #1e1e1e !important;
         color: #d0d0d0 !important;
-    }
-
-    /* Syntax Highlighting - Token colors */
-    .essay-body .highlight span[style*="color:#00a8c8"],
-    .note-body .highlight span[style*="color:#00a8c8"] {
-        color: var(--syntax-keyword) !important;
-    }
-
-    .essay-body .highlight span[style*="color:#75af00"],
-    .note-body .highlight span[style*="color:#75af00"] {
-        color: var(--syntax-function) !important;
-    }
-
-    .essay-body .highlight span[style*="color:#d88200"],
-    .note-body .highlight span[style*="color:#d88200"] {
-        color: var(--syntax-string) !important;
-    }
-
-    .essay-body .highlight span[style*="color:#f92672"],
-    .note-body .highlight span[style*="color:#f92672"] {
-        color: var(--syntax-operator) !important;
-    }
-
-    .essay-body .highlight span[style*="color:#111"],
-    .note-body .highlight span[style*="color:#111"] {
-        color: var(--syntax-default) !important;
     }
 }
 
