@@ -45,9 +45,14 @@ enableEmoji = true
   description = "Building in public - notes and explorations"
   author = "Shawn Yeager"
   email = "hello@shawnyeager.com"
-  
+
   # Custom CSS
   custom_css = ["css/custom.css"]
+
+  # Theme configuration
+  content_type = "notes"          # Content type for parameterized templates
+  favicon_style = "outlined"      # Favicon style: "solid" or "outlined"
+  noindex = true                  # Block search engines (true = block indexing)
 
   # Social/contact links
   nostr = "https://nostr.shawnyeager.com"
