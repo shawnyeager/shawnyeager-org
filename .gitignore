@@ -1,7 +1,1 @@
-# Local Netlify folder
-.netlify
-
-# Hugo build artifacts
-hugo_stats.json
-public/
-.hugo_build.lock
+hugo.work
