@@ -54,13 +54,16 @@ enableEmoji = true
   favicon_style = "outlined"      # Favicon style: "solid" or "outlined"
   noindex = true                  # Block search engines (true = block indexing)
 
+  # Email signup (footer)
+  show_email_signup = false       # No email signup on workshop site
+
   # Social/contact links
   nostr = "https://nostr.shawnyeager.com"
   github = "https://github.com/shawnyeager"
-  
-  # Primary site link (back to .com)
-  primary_site_url = "https://shawnyeager.com"
-  primary_site_name = "Essays"
+
+  # Secondary site link (back to .com)
+  secondary_site_url = "https://shawnyeager.com"
+  secondary_site_name = "Essays"
 
 # Menu configuration
 [[menu.main]]
