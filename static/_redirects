@@ -1,3 +1,0 @@
-# Netlify redirect rules
-# All old shawnyeager.org blog content is permanently removed (410 Gone)
-https://shawnyeager.org/*  https://notes.shawnyeager.com/gone  410!
